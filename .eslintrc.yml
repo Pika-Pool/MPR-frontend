@@ -1,0 +1,31 @@
+env:
+  browser: true
+  es2021: true
+extends:
+  - eslint:recommended
+  - plugin:react/recommended
+  - plugin:react/jsx-runtime
+  - plugin:@typescript-eslint/recommended
+  - prettier
+parser: "@typescript-eslint/parser"
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+    impliedStrict: true
+  sourceType: module
+plugins:
+  - react
+  - "@typescript-eslint"
+  - "@kyleshevlin"
+settings:
+  react:
+    version: detect
+rules:
+  "@kyleshevlin/prefer-custom-hooks": warn
+  "@typescript-eslint/explicit-module-boundary-types": "off"
+  # ts is enough for most components
+  # turn on for components that deal with fetched data
+  # it's ignored in production
+  react/prop-types:
+    - error
+    - skipUndeclared: true
