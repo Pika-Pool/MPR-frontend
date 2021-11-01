@@ -5,6 +5,9 @@
 	// List of extensions which should be recommended for users of this workspace.
 	"recommendations": [
 		"esbenp.prettier-vscode",
-		"dbaeumer.vscode-eslint"
+		"dbaeumer.vscode-eslint",
+		"mrmlnc.vscode-scss",
+		"sibiraj-s.vscode-scss-formatter",
+		"zignd.html-css-class-completion"
 	]
 }
