@@ -10,10 +10,10 @@ export default defineConfig({
 		},
 	},
 	plugins: [
-		react(),
 		{
 			...eslint({ throwOnError: true, include: ['src/**/*.{js,jsx,ts,tsx'] }),
 			enforce: 'pre',
 		},
+		react(),
 	],
 });
