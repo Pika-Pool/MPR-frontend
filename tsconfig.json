@@ -1,32 +1,45 @@
 {
 	"compilerOptions": {
-		"target": "ESNext",
-		"useDefineForClassFields": true,
-		"lib": ["DOM", "DOM.Iterable", "ESNext"],
+		/* Language and Environment */
+		"target": "ES2021",
+		"lib": ["DOM", "DOM.Iterable", "ES2021"],
 		"jsx": "react-jsx",
 
-		"allowJs": false,
-		"skipLibCheck": false,
-		"esModuleInterop": false,
-		"allowSyntheticDefaultImports": true,
+		/* Modules */
+		"module": "ES2020",
+		"moduleResolution": "node",
 
+		/* Emit */
+		"noEmit": true,
+
+		/* Interop Constraints */
+		"isolatedModules": true,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+
+		/* Type Checking */
 		"strict": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"strictBindCallApply": true,
+		"strictPropertyInitialization": true,
+		"noImplicitThis": true,
 		"useUnknownInCatchVariables": true,
 		"alwaysStrict": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"exactOptionalPropertyTypes": true,
 		"noImplicitReturns": true,
-		"noFallthroughCasesInSwitch": false,
 		"noUncheckedIndexedAccess": true,
 		"noImplicitOverride": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"allowUnusedLabels": true,
+		"allowUnreachableCode": true,
+		"noFallthroughCasesInSwitch": false,
 
-		"forceConsistentCasingInFileNames": true,
-		"module": "ESNext",
-		"moduleResolution": "Node",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"noEmit": true
-	},
-	"include": ["./src"]
+		/* Completeness */
+		"skipLibCheck": false
+	}
 }
