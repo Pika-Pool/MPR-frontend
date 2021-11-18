@@ -1,5 +1,6 @@
 html {
 	box-sizing: border-box;
+	height: 100%;
 }
 
 *,
@@ -17,5 +18,9 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-// Import Bootstrap and its default variables
-@import "node_modules/bootstrap/scss/bootstrap.scss";
+body,
+#root {
+	min-height: 100%;
+}
+
+@import "bootstrapCustom";

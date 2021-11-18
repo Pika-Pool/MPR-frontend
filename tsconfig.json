@@ -40,6 +40,7 @@
 		"noFallthroughCasesInSwitch": false,
 
 		/* Completeness */
-		"skipLibCheck": false
-	}
+		"skipLibCheck": true
+	},
+	"include": ["src"]
 }

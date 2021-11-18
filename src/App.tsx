@@ -1,7 +1,11 @@
+import Navbar from './components/Navbar';
+import TeacherDashboard from './pages/TeacherDashboard';
+
 export default function App() {
 	return (
 		<div>
-			<h1>hello</h1>
+			<Navbar />
+			<TeacherDashboard />
 		</div>
 	);
 }
