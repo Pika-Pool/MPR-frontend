@@ -1,61 +1,53 @@
-import { useEffect, useState } from 'react';
-import { FaLock, FaLockOpen } from 'react-icons/fa';
-import env from '../config/env';
+import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import TeacherModulesList from '../components/TeacherModulesList';
+// types
+import type { CSSProperties } from 'react';
 
-interface Module {
-	id: number;
-	module_state: boolean;
-	module_name: string;
-}
+const tabsList = ['modules', 'students'] as const;
+type DashboardTab = typeof tabsList[number];
 
 export default function TeacherDashboard() {
-	const [listOfModules, setListOfModules] = useState<Module[]>([]);
-
-	useEffect(() => {
-		fetch(`${env.serverBaseUrl}/datumApp/teacherHome/1`, {
-			mode: 'cors',
-			headers: { Accept: 'application/json' },
-		})
-			.then(res => res.json())
-			.then(data => {
-				console.log(data);
-				setListOfModules(data);
-			})
-			.catch(err => console.error(err));
-	}, []);
-
-	const onToggleModuleState = (id: number) => {
-		fetch(`${env.serverBaseUrl}/datumApp/changeState`, {
-			body: JSON.stringify({ id }),
-			mode: 'cors',
-			headers: { Accept: 'application/json' },
-			method: 'PUT',
-		})
-			.then(res => res.json())
-			.then(data => {
-				console.log(data);
-				// setListOfModules(data);
-			})
-			.catch(err => console.log(err));
-	};
+	// eslint-disable-next-line @kyleshevlin/prefer-custom-hooks
+	const [tab, setTab] = useState<DashboardTab>(tabsList[0]);
 
 	return (
-		<main className='container'>
-			<h1 className='text-center'>Modules</h1>
-
-			<ol className='list-group list-group-numbered'>
-				{listOfModules.map(({ id, module_name, module_state }) => (
-					<li className='list-group-item d-flex' key={id}>
-						<div className='d-flex justify-content-between align-items-center w-100 ms-2'>
-							<div>{module_name}</div>
-
-							<div onClick={() => onToggleModuleState(id)} role='button'>
-								{module_state ? <FaLockOpen /> : <FaLock />}
-							</div>
-						</div>
-					</li>
+		<main className='teacher-dashboard container'>
+			<header
+				className='teacher-dashboard__tab-selector row fs-3 fw-bold mb-5 border rounded'
+				style={{ '--tab-index': tabsList.indexOf(tab) } as CSSProperties}
+			>
+				{tabsList.map(tabName => (
+					<div
+						key={tabName}
+						onClick={() => setTab(tabName)}
+						role='button'
+						className={`col text-center text-capitalize ${
+							tabName === tab && 'text-white'
+						}`}
+					>
+						{tabName}
+					</div>
 				))}
-			</ol>
+			</header>
+			<h1 className='text-capitalize'>{tab}</h1>
+
+			<DashboardContent tab={tab} />
 		</main>
 	);
+}
+
+interface DashboardContentProps {
+	tab: DashboardTab;
+}
+
+function DashboardContent({ tab }: DashboardContentProps) {
+	switch (tab) {
+		case 'modules':
+			return <TeacherModulesList />;
+		case 'students':
+			return null;
+		default:
+			return <Navigate to='/not-found' />;
+	}
 }

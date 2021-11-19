@@ -1,0 +1,27 @@
+.teacher-dashboard {
+	max-width: 850px;
+	margin: auto;
+}
+
+.teacher-dashboard__tab-selector {
+	position: relative;
+}
+
+.teacher-dashboard__tab-selector > * {
+	z-index: 0;
+}
+
+.teacher-dashboard__tab-selector::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	left: calc((100% / 2) * var(--tab-index, 0));
+	z-index: -1;
+
+	background-color: $red;
+	border-radius: $border-radius;
+
+	width: calc(100% / 2);
+
+	transition: left 0.2s ease;
+}
