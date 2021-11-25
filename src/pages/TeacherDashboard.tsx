@@ -1,8 +1,6 @@
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import { Navigate } from 'react-router-dom';
 import TeacherModulesList from '../components/TeacherModulesList';
-// types
-import type { CSSProperties } from 'react';
 
 const tabsList = ['modules', 'students'] as const;
 type DashboardTab = typeof tabsList[number];
