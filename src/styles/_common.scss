@@ -1,0 +1,14 @@
+.mw-850 {
+	max-width: 850px;
+	margin: auto;
+}
+
+.lock-icon {
+	&-closed {
+		color: $red-400;
+	}
+
+	&-open {
+		color: $green-400;
+	}
+}

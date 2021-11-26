@@ -7,8 +7,8 @@ export default function Navbar() {
 				</a>
 
 				<ul className='navbar-nav ms-auto'>
-					<li className='nav-item'>
-						<a className='nav-link' href='#' tabIndex={-1} aria-disabled='true'>
+					<li className='nav-item d-flex justify-content-center align-items-center'>
+						<a className='nav-link' href='#'>
 							Sri
 						</a>
 					</li>

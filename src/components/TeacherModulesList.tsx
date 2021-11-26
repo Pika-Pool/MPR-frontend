@@ -1,57 +1,75 @@
-import { useEffect, useState } from 'react';
 import { FaLock, FaLockOpen } from 'react-icons/fa';
-import env from '../config/env';
-
-interface Module {
-	id: number;
-	module_state: boolean;
-	module_name: string;
-}
+import { Link } from 'react-router-dom';
+import useModulesListQuery from '../hooks/useModulesListQuery';
+import useToggleModuleState from '../hooks/useToggleModuleState';
+import LoadingSpinner from './LoadingSpinner';
 
 export default function TeacherModulesList() {
-	const [listOfModules, setListOfModules] = useState<Module[]>([]);
+	const modulesListQuery = useModulesListQuery();
+	// TODO: error handling
+	const { mutate: onToggleModuleState } = useToggleModuleState();
 
-	useEffect(() => {
-		fetch(`${env.serverBaseUrl}/datumApp/teacherHome/1`, {
-			mode: 'cors',
-			headers: { Accept: 'application/json' },
-		})
-			.then(res => res.json())
-			.then(data => {
-				console.log(data);
-				setListOfModules(data);
-			})
-			.catch(err => console.error(err));
-	}, []);
-
-	const onToggleModuleState = (id: number) => {
-		fetch(`${env.serverBaseUrl}/datumApp/changeState`, {
-			body: JSON.stringify({ id }),
-			mode: 'cors',
-			headers: { Accept: 'application/json' },
-			method: 'PUT',
-		})
-			.then(res => res.json())
-			.then(data => {
-				console.log(data);
-				// setListOfModules(data);
-			})
-			.catch(err => console.log(err));
-	};
+	if (modulesListQuery.isLoading) return <LoadingSpinner />;
+	if (modulesListQuery.error) {
+		console.log(Object.prototype.toString.call(modulesListQuery.error));
+		return (
+			<h3 className='text-danger'>Something went wrong. Try again later.</h3>
+		);
+	}
 
 	return (
 		<ol className='teacher-modules-list list-group list-group-numbered'>
-			{listOfModules.map(({ id, module_name, module_state }) => (
-				<li className='list-group-item d-flex' key={id}>
-					<div className='d-flex justify-content-between align-items-center w-100 ms-2'>
-						<div>{module_name}</div>
+			{modulesListQuery.data?.map(module => {
+				const {
+					id: module_for_section_id,
+					module_id: { module_name },
+					module_state,
+				} = module;
 
-						<div onClick={() => onToggleModuleState(id)} role='button'>
-							{module_state ? <FaLockOpen /> : <FaLock />}
+				return (
+					<li className='list-group-item d-flex' key={module_for_section_id}>
+						<div className='d-flex justify-content-between align-items-center w-100 ms-2'>
+							<Link to={`../module/${module_for_section_id}`}>
+								{module_name}
+							</Link>
+
+							<div onClick={() => onToggleModuleState(module)} role='button'>
+								{module_state ? (
+									<FaLockOpen className='lock-icon-open' />
+								) : (
+									<FaLock className='lock-icon-closed' />
+								)}
+							</div>
 						</div>
-					</div>
-				</li>
-			))}
+					</li>
+				);
+			})}
 		</ol>
 	);
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function isModule(obj: any): obj is Module {
+	return (
+		((obj != null && typeof obj === 'object') || typeof obj === 'function') &&
+		typeof obj.id === 'number' &&
+		((obj.module_id !== null && typeof obj.module_id === 'object') ||
+			typeof obj.module_id === 'function') &&
+		typeof obj.module_id.id === 'number' &&
+		typeof obj.module_id.module_name === 'string' &&
+		typeof obj.module_id.description === 'string' &&
+		typeof obj.module_state === 'boolean' &&
+		typeof obj.section_id === 'number'
+	);
+}
+
+export interface Module {
+	id: number;
+	module_id: {
+		id: number;
+		module_name: string;
+		description: string;
+	};
+	module_state: boolean;
+	section_id: number;
 }

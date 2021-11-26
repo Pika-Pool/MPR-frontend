@@ -23,6 +23,7 @@ settings:
 rules:
   "@kyleshevlin/prefer-custom-hooks": warn
   "@typescript-eslint/explicit-module-boundary-types": "off"
+  "@typescript-eslint/no-non-null-assertion": "off"
   # ts is enough for most components
   # turn on for components that deal with fetched data
   # it's ignored in production

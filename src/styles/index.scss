@@ -27,6 +27,12 @@ body,
 // @import "bootstrapCustom";
 @import 'bootstrap/scss/bootstrap';
 
+// commons
+@import 'common';
+
+// components
+@import 'components/LoadingSpinner';
+
 // pages
 @import 'pages/LoginPage';
 @import 'pages/TeacherDashboard';

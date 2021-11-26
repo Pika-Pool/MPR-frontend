@@ -10,7 +10,7 @@ export default function TeacherDashboard() {
 	const [tab, setTab] = useState<DashboardTab>(tabsList[0]);
 
 	return (
-		<main className='teacher-dashboard container'>
+		<main className='mw-850 container'>
 			<header
 				className='teacher-dashboard__tab-selector row fs-3 fw-bold mb-5 border rounded'
 				style={{ '--tab-index': tabsList.indexOf(tab) } as CSSProperties}

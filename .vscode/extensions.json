@@ -8,6 +8,7 @@
 		"dbaeumer.vscode-eslint",
 		"mrmlnc.vscode-scss",
 		"sibiraj-s.vscode-scss-formatter",
-		"zignd.html-css-class-completion"
+		"zignd.html-css-class-completion",
+		"eamodio.gitlens"
 	]
 }
