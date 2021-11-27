@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from 'react-query';
 import { moduleQueryKeys } from '../constants/queryKeys';
-import { getListOfModules } from '../queryFns/teacherQueryFns';
+import { getListOfModules } from '../constants/queryFns/teacherQueryFns';
 
 export default function useModulesListQuery() {
 	const queryClient = useQueryClient();
@@ -8,6 +8,7 @@ export default function useModulesListQuery() {
 		moduleQueryKeys.modulesListQuery,
 		() => getListOfModules(1),
 		{
+			initialData: [],
 			onSuccess: modulesList =>
 				modulesList.forEach(module =>
 					queryClient.setQueryData(

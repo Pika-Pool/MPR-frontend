@@ -1,9 +1,11 @@
+import { appName } from '../config/appGlobalMetaData';
+
 export default function Navbar() {
 	return (
 		<nav className='navbar navbar-expand navbar-dark bg-dark mb-5 mb-md-3'>
 			<div className='container'>
 				<a className='navbar-brand h1 mb-0' href='#'>
-					DatumDB
+					{appName}
 				</a>
 
 				<ul className='navbar-nav ms-auto'>

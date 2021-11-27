@@ -11,7 +11,6 @@ export default function TeacherModulesList() {
 
 	if (modulesListQuery.isLoading) return <LoadingSpinner />;
 	if (modulesListQuery.error) {
-		console.log(Object.prototype.toString.call(modulesListQuery.error));
 		return (
 			<h3 className='text-danger'>Something went wrong. Try again later.</h3>
 		);

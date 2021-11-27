@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from 'react-query';
 import type { Module } from '../components/TeacherModulesList';
 import { moduleQueryKeys } from '../constants/queryKeys';
-import { getModuleData } from '../queryFns/teacherQueryFns';
+import { getModuleData } from '../constants/queryFns/teacherQueryFns';
 
 export default function useModuleQuery(moduleForSectionId?: number) {
 	const queryClient = useQueryClient();
@@ -12,12 +12,12 @@ export default function useModuleQuery(moduleForSectionId?: number) {
 		{
 			enabled: moduleForSectionId != null,
 			onSuccess: module =>
-				queryClient.setQueryData<Module[]>(
+				queryClient.setQueryData<Module[] | undefined>(
 					moduleQueryKeys.modulesListQuery,
 					prevModulesList =>
 						prevModulesList?.map(prevModule =>
 							prevModule.id === module.id ? module : prevModule,
-						) || [],
+						),
 				),
 		},
 	);

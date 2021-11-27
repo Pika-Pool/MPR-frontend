@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import TeacherDashboard from './pages/TeacherDashboard';
 import TeacherModule from './pages/TeacherModule';
 import NavigateToNotFound from './components/NavigateToNotFound';
+import TeacherQuestion from './pages/TeacherQuestion';
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -32,10 +33,10 @@ export default function App() {
 								path='module/:moduleForSectionId'
 								element={<TeacherModule />}
 							/>
-							{/* <Route
+							<Route
 								path='module/:moduleForSectionId/question/:questionId'
 								element={<TeacherQuestion />}
-							/> */}
+							/>
 							<Route path='*' element={<NavigateToNotFound />} />
 						</Route>
 						<Route path='/not-found' element={<h1>Page not found</h1>} />

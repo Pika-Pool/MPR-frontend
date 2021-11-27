@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from 'react-query';
 import { moduleQueryKeys } from '../constants/queryKeys';
-import { getModuleQuestions } from '../queryFns/teacherQueryFns';
+import { getModuleQuestions } from '../constants/queryFns/teacherQueryFns';
 
 export default function useModuleQuestionsListQuery(moduleId?: number) {
 	const queryClient = useQueryClient();
