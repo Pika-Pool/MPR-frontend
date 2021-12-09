@@ -1,7 +1,7 @@
 import { FaLock, FaLockOpen } from 'react-icons/fa';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
-import { type Module } from '../components/TeacherModulesList';
+import type { Module } from '../components/TeacherModulesList';
 import useModuleQuery from '../hooks/useModuleQuery';
 import useModuleQuestionsListQuery from '../hooks/useModuleQuestionsListQuery';
 import useToggleModuleState from '../hooks/useToggleModuleState';

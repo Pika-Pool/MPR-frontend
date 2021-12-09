@@ -1,8 +1,8 @@
 import type { Module } from '../../components/TeacherModulesList';
-import axios from '../../config/axios';
+import axios from '../../config/axiosInstance';
 import type { ModuleQuestion } from '../../pages/TeacherModule';
 
-interface ServerResponseData<T> {
+export interface ServerResponseData<T> {
 	payload: T;
 }
 

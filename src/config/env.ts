@@ -1,3 +1,6 @@
-const { VITE_SERVER_URL: serverBaseUrl } = import.meta.env;
+const {
+	VITE_SERVER_URL: serverBaseUrl,
+	VITE_LOCALSTORAGE_KEY_FOR_CODE: localStorageKeyForCode,
+} = import.meta.env;
 
-export default { serverBaseUrl };
+export default { serverBaseUrl, localStorageKeyForCode };

@@ -11,7 +11,7 @@ export default defineConfig({
 	},
 	plugins: [
 		{
-			...eslint({ throwOnError: true, include: ['src/**/*.{js,jsx,ts,tsx'] }),
+			...eslint({ throwOnError: true, include: ['src/**/*.{js,jsx,ts,tsx}'] }),
 			enforce: 'pre',
 		},
 		react(),

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
-import { type Module } from '../components/TeacherModulesList';
-import { moduleQueryKeys } from '../constants/queryKeys';
+import type { Module } from '../components/TeacherModulesList';
 import { toggleModuleState } from '../constants/queryFns/teacherQueryFns';
+import { moduleQueryKeys } from '../constants/queryKeys';
 
 export default function useToggleModuleState() {
 	const queryClient = useQueryClient();

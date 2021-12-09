@@ -30,14 +30,15 @@
 		"alwaysStrict": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"exactOptionalPropertyTypes": true,
 		"noImplicitReturns": true,
 		"noUncheckedIndexedAccess": true,
 		"noImplicitOverride": true,
 		"noPropertyAccessFromIndexSignature": true,
 		"allowUnusedLabels": true,
 		"allowUnreachableCode": true,
+		"exactOptionalPropertyTypes": false,
 		"noFallthroughCasesInSwitch": false,
+		"importsNotUsedAsValues": "error",
 
 		/* Completeness */
 		"skipLibCheck": true

@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from 'react-query';
 import { getQuestionData } from '../constants/queryFns/teacherQueryFns';
 import { moduleQueryKeys } from '../constants/queryKeys';
-import { ModuleQuestion } from '../pages/TeacherModule';
+import type { ModuleQuestion } from '../pages/TeacherModule';
 
 export default function useModuleQuestionQuery(questionId?: number) {
 	const queryClient = useQueryClient();

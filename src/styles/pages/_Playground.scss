@@ -1,0 +1,24 @@
+.sql-result-table-container {
+	background-color: hsl(220, 18%, 95%);
+	border-radius: 5px;
+	padding: 0.5rem;
+}
+
+.sql-result-table :is(th, td) {
+	max-width: 10rem;
+	min-width: 4rem;
+}
+
+/*
+CREATE TABLE stu (
+  name varchar(10),
+  rollno int,
+  age int,
+  address varchar(50),
+	address2 varchar(50)
+);
+
+INSERT INTO stu VALUES ("sriram", 123431, 431, "DG-2/248D, Vikas Puri, New Delhi. Near Mahindra appartments", "DG-2/248D, Vikas Puri, New Delhi. Near Mahindra appartments"),("sriram", 123431, 431, "DG-2/248D, Vikas Puri, New Delhi. Near Mahindra appartments", "DG-2/248D, Vikas Puri, New Delhi. Near Mahindra appartments"),("sriram", 123431, 431, "DG-2/248D, Vikas Puri, New Delhi. Near Mahindra appartments", "DG-2/248D, Vikas Puri, New Delhi. Near Mahindra appartments"),("sriram", 123431, 431, "DG-2/248D, Vikas Puri, New Delhi. Near Mahindra appartments", "DG-2/248D, Vikas Puri, New Delhi. Near Mahindra appartments"),("sriram", 123431, 431, "DG-2/248D, Vikas Puri, New Delhi. Near Mahindra appartments", "DG-2/248D, Vikas Puri, New Delhi. Near Mahindra appartments");
+
+SELECT * FROM stu;
+*/
