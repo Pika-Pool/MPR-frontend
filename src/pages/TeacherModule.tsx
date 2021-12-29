@@ -22,7 +22,7 @@ export default function TeacherModule() {
 
 	// TODO: error handling
 	const moduleQuestionsListQuery = useModuleQuestionsListQuery(
-		moduleQuery.data?.id,
+		moduleQuery.data?.module_id.id,
 	);
 
 	// TODO: error handling

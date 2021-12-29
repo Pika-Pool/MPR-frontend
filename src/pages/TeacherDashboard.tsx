@@ -1,36 +1,58 @@
-import { useState, type CSSProperties } from 'react';
-import { Navigate } from 'react-router-dom';
+import type { CSSProperties } from 'react';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import TeacherModulesList from '../components/TeacherModulesList';
+import TeacherStudentStats from '../components/TeacherStudentStats';
 
 const tabsList = ['modules', 'students'] as const;
 type DashboardTab = typeof tabsList[number];
 
 export default function TeacherDashboard() {
-	// eslint-disable-next-line @kyleshevlin/prefer-custom-hooks
-	const [tab, setTab] = useState<DashboardTab>(tabsList[0]);
+	const location = useLocation();
+	const navigate = useNavigate();
+
+	// remove starting '#'
+	const currentTab = location.hash.substring(1) as DashboardTab;
+
+	if (!tabsList.find(tab => tab === currentTab))
+		return (
+			<Navigate
+				to={{ ...location, hash: '#' + tabsList[0] }}
+				replace
+				state={location.state}
+			/>
+		);
 
 	return (
 		<main className='mw-850 container'>
 			<header
 				className='teacher-dashboard__tab-selector row fs-3 fw-bold mb-5 border rounded'
-				style={{ '--tab-index': tabsList.indexOf(tab) } as CSSProperties}
+				style={
+					{
+						'--tab-index': tabsList.indexOf(currentTab),
+					} as CSSProperties
+				}
 			>
 				{tabsList.map(tabName => (
 					<div
 						key={tabName}
-						onClick={() => setTab(tabName)}
+						onClick={() =>
+							navigate(
+								{ ...location, hash: '#' + tabName },
+								{ replace: true, state: location.state },
+							)
+						}
 						role='button'
 						className={`col text-center text-capitalize ${
-							tabName === tab && 'text-white'
+							tabName === currentTab && 'text-white'
 						}`}
 					>
 						{tabName}
 					</div>
 				))}
 			</header>
-			<h1 className='text-capitalize'>{tab}</h1>
+			<h1 className='text-capitalize'>{currentTab}</h1>
 
-			<DashboardContent tab={tab} />
+			<DashboardContent tab={currentTab} />
 		</main>
 	);
 }
@@ -44,8 +66,8 @@ function DashboardContent({ tab }: DashboardContentProps) {
 		case 'modules':
 			return <TeacherModulesList />;
 		case 'students':
-			return null;
+			return <TeacherStudentStats />;
 		default:
-			return <Navigate to='/not-found' />;
+			throw new Error(`"tab" must be one of ${tabsList}, got: ${tab}`);
 	}
 }

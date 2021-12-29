@@ -3,7 +3,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import 'bootstrap';
 // components
-import { Navbar, NavigateToNotFound } from './components';
+import { Navbar, NotFound } from './components';
 // pages
 import {
 	TeacherDashboard,
@@ -45,7 +45,7 @@ export default function App() {
 								path='module/:moduleForSectionId/question/:questionId'
 								element={<TeacherQuestion />}
 							/>
-							<Route path='*' element={<NavigateToNotFound />} />
+							<Route path='*' element={<NotFound />} />
 						</Route>
 
 						<Route path='/student/*'>
@@ -62,7 +62,7 @@ export default function App() {
 						</Route>
 
 						<Route path='/not-found' element={<h1>Page not found</h1>} />
-						<Route path='*' element={<NavigateToNotFound />} />
+						<Route path='*' element={<NotFound />} />
 					</Routes>
 				</div>
 

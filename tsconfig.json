@@ -11,6 +11,7 @@
 
 		/* Emit */
 		"noEmit": true,
+		"importsNotUsedAsValues": "error",
 
 		/* Interop Constraints */
 		"isolatedModules": true,
@@ -33,12 +34,11 @@
 		"noImplicitReturns": true,
 		"noUncheckedIndexedAccess": true,
 		"noImplicitOverride": true,
-		"noPropertyAccessFromIndexSignature": true,
-		"allowUnusedLabels": true,
-		"allowUnreachableCode": true,
+		"noPropertyAccessFromIndexSignature": false,
+		"allowUnusedLabels": false,
+		"allowUnreachableCode": false,
 		"exactOptionalPropertyTypes": false,
 		"noFallthroughCasesInSwitch": false,
-		"importsNotUsedAsValues": "error",
 
 		/* Completeness */
 		"skipLibCheck": true

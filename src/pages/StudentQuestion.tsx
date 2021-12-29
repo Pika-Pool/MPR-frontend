@@ -45,7 +45,7 @@ export default function StudentQuestion() {
 		execSqlCode(preCommand + '\n\n' + answer);
 	}, [execSqlCode, questionQuery.data?.question, questionQuery.isSuccess]);
 
-	if (!isNumber(questionId) || questionQuery.error?.response?.status === 400)
+	if (!isNumber(questionId) || questionQuery.error?.response?.status === 404)
 		return (
 			<main className='mw-850 container'>
 				<h3>Question Not Found</h3>

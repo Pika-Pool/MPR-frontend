@@ -11,6 +11,7 @@ export default function SqlResultsTable({ columns, values }: QueryExecResult) {
 						))}
 					</tr>
 				</thead>
+
 				<tbody>
 					{
 						// values is an array of arrays representing the results of the query

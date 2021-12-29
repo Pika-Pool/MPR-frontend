@@ -1,7 +1,7 @@
 {
 	"name": "minor-project",
 	"version": "0.0.0",
-	"main": "src/index.tsx",
+	"main": "index.html",
 	"scripts": {
 		"start": "vite",
 		"dev": "vite",

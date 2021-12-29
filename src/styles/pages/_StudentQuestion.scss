@@ -17,10 +17,8 @@
 		}
 	}
 
-	.question-playground-results {
-		.result-tables {
-			height: 20rem;
-		}
+	.result-tables {
+		max-height: 20rem;
 	}
 
 	.question-playground-editor {

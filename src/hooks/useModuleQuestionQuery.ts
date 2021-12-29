@@ -1,4 +1,5 @@
 import { useQuery, useQueryClient } from 'react-query';
+import type { AxiosQueryError } from '../config/axiosInstance';
 import { getQuestionData } from '../constants/queryFns/teacherQueryFns';
 import { moduleQueryKeys } from '../constants/queryKeys';
 import type { ModuleQuestion } from '../pages/TeacherModule';
@@ -6,8 +7,8 @@ import type { ModuleQuestion } from '../pages/TeacherModule';
 export default function useModuleQuestionQuery(questionId?: number) {
 	const queryClient = useQueryClient();
 
-	const moduleQuestionQuery = useQuery(
-		moduleQueryKeys.moduleQuestionQuery(questionId ?? -1),
+	const moduleQuestionQuery = useQuery<ModuleQuestion, AxiosQueryError>(
+		[moduleQueryKeys.moduleQuestionQuery, questionId],
 		() => getQuestionData(questionId ?? -1),
 		{
 			enabled: questionId != null,

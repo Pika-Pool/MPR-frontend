@@ -14,7 +14,7 @@ export default function useModuleQuestionsListQuery(moduleId?: number) {
 			onSuccess: moduleQuestionsList =>
 				moduleQuestionsList.forEach(questionObj =>
 					queryClient.setQueryData(
-						moduleQueryKeys.moduleQuestionQuery(questionObj.id),
+						[moduleQueryKeys.moduleQuestionQuery, questionObj.id],
 						questionObj,
 					),
 				),

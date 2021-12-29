@@ -3,8 +3,8 @@ export const moduleQueryKeys = {
 	moduleQuery: (moduleForSectionId: number) =>
 		`moduleQuery-${moduleForSectionId}`,
 	moduleQuestionsListQuery: 'moduleQuestionsListQuery',
-	moduleQuestionQuery: (questionId: number) =>
-		`moduleQuestionQuery-${questionId}`,
+	moduleQuestionQuery: 'moduleQuestionQuery',
+	studentStatsQuery: 'studentStatsQuery',
 } as const;
 
 export const studentQueryKeys = {

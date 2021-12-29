@@ -8,25 +8,25 @@ export interface ServerResponseData<T> {
 
 export async function getListOfModules(teacherId: number) {
 	const res = await axios.get<ServerResponseData<Module[]>>(
-		`/dashboard/${teacherId}/0`,
+		`/dashboard/${teacherId}`,
 	);
 
 	return res.data.payload || [];
 }
 
-export async function toggleModuleState({ ...module }: Module) {
-	module.module_state = !module.module_state;
+export async function toggleModuleState({ ...currentModule }: Module) {
+	currentModule.module_state = !currentModule.module_state;
 
 	const res = await axios.put<ServerResponseData<Module | undefined>>(
 		'/updateModule/',
-		module,
+		currentModule,
 	);
 	return res.data.payload;
 }
 
 export async function getModuleData(moduleForSectionId: number) {
 	const res = await axios.get<ServerResponseData<Module>>(
-		`/getModuleSection/${moduleForSectionId}`,
+		`/getModule/${moduleForSectionId}`,
 	);
 
 	return res.data.payload;
@@ -43,6 +43,30 @@ export async function getModuleQuestions(moduleId: number) {
 export async function getQuestionData(questionId: number) {
 	const res = await axios.get<ServerResponseData<ModuleQuestion>>(
 		`/getQuestion/${questionId}`,
+	);
+
+	return res.data.payload;
+}
+
+export async function updateQuestionRequest(questionObj: ModuleQuestion) {
+	const res = await axios.post<ServerResponseData<ModuleQuestion>>(
+		`/addUpdateQuestion/`,
+		questionObj,
+	);
+
+	return res.data.payload;
+}
+
+export interface StudentStat {
+	id: number;
+	name: string;
+	enroll: number;
+	marks: number;
+}
+
+export async function getStudentStats(teacherId: number) {
+	const res = await axios.get<ServerResponseData<StudentStat[]>>(
+		`/studentStats/${teacherId}`,
 	);
 
 	return res.data.payload;
