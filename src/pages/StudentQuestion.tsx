@@ -94,7 +94,7 @@ const QuestionInfoSection = memo(
 					<h1 className='text-decoration-underline'>{title}</h1>
 
 					<div className='d-flex flex-column justify-content-center align-items-center'>
-						{!is_complete ? (
+						{is_complete ? (
 							<>
 								<FaCheck className='lock-icon-open' fontSize='2rem' />
 								<small className='fw-bold'>Done</small>
