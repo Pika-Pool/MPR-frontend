@@ -33,6 +33,7 @@ export default function StudentDashboard() {
 
 	return (
 		<main className='mw-850 container'>
+			<h1 className='mb-5'>Modules</h1>
 			<CompleteIncompleteAccordion
 				completeList={data.complete}
 				completedHead='Completed Modules'
